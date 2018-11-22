@@ -75,14 +75,17 @@
       });
 
       socket.on('connect', () => {
-        const id = socket.id;
-
-        log('#connect,', id, socket);
-        console.log('2232');
+        // const id = socket.id;
         // 监听自身 id 以实现 p2p 通讯
-        socket.on(id, msg => {
-          log('#receive,', msg);
+        // socket.on(id, msg => {
+        //   log('#receive,', msg);
+        // });
+
+        socket.on('text', (data) => {
+          console.log(data.msg);
         });
+        socket.emit('exchange', {mes: 'ssss'});
+
       });
 
       // 接收在线用户信息

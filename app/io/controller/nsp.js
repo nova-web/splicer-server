@@ -9,21 +9,9 @@ class NspController extends Controller {
     const message = ctx.args[0] || {};
     const socket = ctx.socket;
     const client = socket.id;
-    console.log(ctx);
-    console.log('client', client);
+    socket.emit('text', {msg: 'success'});
+    console.log(message);
 
-    try {
-      const { target, payload } = message;
-      if (!target) return;
-      const msg = ctx.helper.parseMsg('exchange', payload, { client, target });
-      nsp.emit(target, msg);
-
-      setInterval(()=>{
-        nsp.emit(client, client);
-      },2000);
-    } catch (error) {
-      app.logger.error(error);
-    }
   }
 }
 
