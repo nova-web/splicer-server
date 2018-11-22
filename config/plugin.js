@@ -5,15 +5,15 @@
 
 exports.io = {
   enable: true,
-  package: 'egg-socket.io',
+  package: 'egg-socket.io'
 };
 
 exports.nunjucks = {
   enable: true,
-  package: 'egg-view-nunjucks',
+  package: 'egg-view-nunjucks'
 };
 
-exports.redis = {
-  enable: true,
-  package: 'egg-redis',
-};
+// exports.redis = {
+//   enable: false,
+//   package: 'egg-redis'
+// };
