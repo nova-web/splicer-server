@@ -27,5 +27,14 @@ class NspController extends Controller {
     };
     ctx.socket.emit('firstData', data);
   }
+  async getViewProt() {
+    const {ctx, app} = this;
+    const message = ctx.args[0] || {};
+    const nsp = app.io.of('/');
+    const socket  = ctx.socket;
+    const query = socket.handshake.query;
+    console.log('query',query);
+    nsp.emit('getViewProt', message);
+  }
 }
 module.exports = NspController;

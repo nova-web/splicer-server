@@ -5,6 +5,8 @@ const PREFIX = 'room';
 module.exports = () => {
   return async (ctx, next) => {
     const { app, socket, logger, helper } = ctx;
+    const id = socket.id;
+
     await next();
     // const id = socket.id;
     // console.log('socket.id', id);

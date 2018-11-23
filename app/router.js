@@ -11,4 +11,5 @@ module.exports = app => {
   io.of('/').route('exchange', io.controller.nsp.exchange);
   io.of('/').route('text', io.controller.nsp.text);
   io.of('/').route('initData', io.controller.nsp.initData);
+  io.of('/').route('getViewProt', io.controller.nsp.getViewProt);
 };
