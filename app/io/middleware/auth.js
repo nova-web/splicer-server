@@ -5,7 +5,6 @@ const PREFIX = 'room';
 module.exports = () => {
   return async (ctx, next) => {
     const { app, socket, logger, helper } = ctx;
-    socket.emit('text', {msg: 'abc'});
     await next();
     // const id = socket.id;
     // console.log('socket.id', id);
@@ -86,6 +85,5 @@ module.exports = () => {
     //     message: `User(${id}) leaved.`,
     //   });
     // });
-
   };
 };

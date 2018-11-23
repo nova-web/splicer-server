@@ -9,4 +9,6 @@ module.exports = app => {
 
   // socket.io
   io.of('/').route('exchange', io.controller.nsp.exchange);
+  io.of('/').route('text', io.controller.nsp.text);
+  io.of('/').route('initData', io.controller.nsp.initData);
 };
