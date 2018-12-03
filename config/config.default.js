@@ -1,5 +1,5 @@
 'use strict';
-
+const path = require('path');
 module.exports = appInfo => {
   const config = (exports = {});
 
@@ -16,6 +16,13 @@ module.exports = appInfo => {
     }
   };
 
+
+  config.static = {
+    prefix: '/',
+    dir: path.join(appInfo.baseDir, 'app/public')
+  };
+
+  config.apihost = 'http://172.16.6.192:7001';
   // config.redis = {
   //   client: {
   //     port: 6379,
@@ -24,6 +31,7 @@ module.exports = appInfo => {
   //     db: 0,
   //   },
   // };
+
 
   config.io = {
     init: {

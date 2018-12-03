@@ -1,26 +1,31 @@
 'use strict';
 
 const PREFIX = 'room';
+const path = require('path');
+const fs = require('fs')
 
 module.exports = () => {
   return async (ctx, next) => {
     const { app, socket, logger, helper } = ctx;
     const id = socket.id;
+   //  let data = {
+   //    width: 200,
+   //    height: 200,
+   //    x: 20,
+   //    y: 0
+   //  };
 
     await next();
     // const id = socket.id;
     // console.log('socket.id', id);
     // const nsp = app.io.of('/');
     // const query = socket.handshake.query;
-    // // 用户信息
+    // 用户信息
     // const { room, userId } = query;
     // const rooms = [ room ];
-    //
     // logger.debug('#user_info', id, room, userId);
-    //
     // const tick = (id, msg) => {
-    //   logger.debug('#tick', id, msg);
-    //
+    // logger.debug('#tick', id, msg);
     //   // 踢出用户前发送消息
     //   socket.emit(id, helper.parseMsg('deny', msg));
     //

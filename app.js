@@ -9,3 +9,21 @@
 //   });
 // };
 
+module.exports = app => {
+  app.once('server', server => {
+  });
+  app.on('error', error => {
+    console.log(error)
+  });
+  app.on('request', ctx => {
+    // console.log('request');
+    // console.log(ctx);
+  });
+  app.on('response', ctx => {
+    // console.log('response');
+    // console.log(ctx);
+  });
+  app.log = function(data) {
+    console.log(data);
+  }
+};
