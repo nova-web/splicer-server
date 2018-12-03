@@ -19,7 +19,30 @@
   </head>
 
   <body>
+  <div id="playercontainer"></div>
+  <script type="text/javascript" src="http://resource.bcevod.com/player/cyberplayer.js"></script>
+  <script type="text/javascript">
+    var player = cyberplayer("playercontainer").setup({
+      width: 640,
+      height: 480,
+      file: "rtmp://58.200.131.2:1935/livetv/bttv",
+      // image: "http://gdkd6p41ziwjhrgj1zi.exp.bcevod.com/mda-gmgimznr28p1ruuj/mda-gmgimznr28p1ruuj.jpg",
+      autostart: false,
+      stretching: "uniform",
+      repeat: false,
+      volume: 100,
+      controls: true,
+      rtmp: {
+        reconnecttime: 5, // rtmp直播的重连次数
+        bufferlength: 1 // 缓冲多少秒之后开始播放 默认1秒
+      },
+      ak: 'cc94de6803904f2ca7159eedeaced55d'
+    });
+  </script>
+
     <div class="console-wrapper"><pre id="console"></pre></div>
+    <img class="img" src="" alt=""/>
+    <video class="video" src="rtmp://58.200.131.2:1935/livetv/gxtv" controls="controls"></video>
     <script src="https://cdn.bootcss.com/socket.io/2.1.0/socket.io.js"></script>
     <script src="https://cdn.bootcss.com/lodash.js/4.17.10/lodash.min.js"></script>
     <script>
@@ -76,12 +99,22 @@
           // socket.on(id, msg => {
           //   log('#receive,', msg);
           // });
-
+          let img = document.querySelector('.img');
+          let video = document.querySelector('.video');
+          console.log(img);
           socket.on('text', data => {
             console.log(data.msg);
           });
           socket.emit('exchange', { mes: 'ssass' });
           socket.emit('text', { mes: 'aaasaa' });
+          socket.emit('getImage');
+          socket.on('getImage', data => {
+            console.log(data);
+            img.style.width = '300px';
+            img.style.height = '300px';
+            img.src = data.src;
+            video.src = data.video;
+          })
         });
 
         // 接收在线用户信息
